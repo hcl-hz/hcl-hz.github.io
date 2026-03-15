@@ -88,7 +88,7 @@ export const resources = {
       },
       profile: {
         position: "Full Stack Developer",
-        name: "함후추",
+        name: "함초롱",
         image: "프로필 이미지",
         blog: "블로그",
         emailLabel: "이메일",
