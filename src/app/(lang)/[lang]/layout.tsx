@@ -6,7 +6,6 @@ import { languages } from "@/app/i18n/settings";
 import { Footer } from "@/app/Components/Footer";
 import { TopButton } from "@/app/TopButton";
 import { pretendard } from "@/app/Styles/fonts";
-import { LanguageSelector } from "@/app/Components/LanguageSelector";
 
 export const metadata: Metadata = {
   title: `HCL's Space`,
@@ -33,7 +32,6 @@ export default async function RootLayout({
       <ClientLayout params={{ lang }}>
         {children}
         <TopButton />
-        <LanguageSelector />
         <Footer />
       </ClientLayout>
       <div id="modal-root" />
