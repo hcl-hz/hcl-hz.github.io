@@ -1,24 +1,28 @@
 // Colors
-$color-primary-dark: #0e2954;
-$color-primary-medium: #1f6e8c;
-$color-primary-light: #2e6b99;
-$color-accent: #b7edf6;
-$color-accent-hover: #88d3ce; // Derived or new/adjusted
+// Palette: Dark Garnet(30%) + Bone White(60%) + Dusty Rose(10%)
+$color-primary-dark: #781C2E;   // Dark Garnet — header, sidebar, cards
+$color-primary-medium: #9E3A4E; // Garnet mid — hover, borders
+$color-primary-light: #B5566A;  // Garnet light — subtle highlights
+$color-accent: #C4848F;         // Dusty Rose — buttons, links, icons
+$color-accent-hover: #A8626D;   // Dusty Rose darker — accent hover
 
 $color-white: #ffffff;
 $color-black: #000000;
-$color-gray-100: #f8f9fa;
-$color-gray-200: #e9ecef;
-$color-gray-300: #dee2e6;
-$color-gray-400: #ced4da;
-$color-gray-500: #adb5bd;
-$color-gray-600: #868e96;
-$color-gray-700: #495057;
-$color-gray-800: #343a40;
-$color-gray-900: #212529;
+$color-charcoal: #2D2424;       // Warm charcoal — main text
+$color-charcoal-muted: #6B5A5A; // Muted charcoal — secondary text
+$color-bg: #F9F6EE;             // Bone White — main background
+$color-gray-100: #F2EDE4;       // warm gray (Bone White 계열)
+$color-gray-200: #E8E0D4;
+$color-gray-300: #D4C8BC;
+$color-gray-400: #BFB0A4;
+$color-gray-500: #9E8F84;
+$color-gray-600: #7D6E64;
+$color-gray-700: #5C5048;
+$color-gray-800: #3D332C;
+$color-gray-900: #1E1612;
 
 // Backgrounds
-$bg-glass: rgba(14, 41, 84, 0.65);
+$bg-glass: rgba(120, 28, 46, 0.65); // Dark Garnet glass
 $bg-glass-blur: 10px;
 
 // Breakpoints

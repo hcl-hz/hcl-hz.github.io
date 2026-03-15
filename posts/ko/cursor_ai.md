@@ -1,10 +1,10 @@
 ---
 title: "Cursor AI"
-date: "2024-03-20"
+date: "2026-03-14"
 category: "projects"
 description: "Cursor AI 사용법"
 tags: ["Cursor", "AI", "VSCode"]
-thumbnail: "/images/cursor.png"
+thumbnail: ""
 ---
 
 ---

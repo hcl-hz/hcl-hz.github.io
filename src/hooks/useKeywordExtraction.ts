@@ -20,6 +20,8 @@ export function useKeywordExtraction(searchResults: string[]): KeywordEntry[] {
       // 단어 분리 로직 수정
       const words = searchResults
         .join(" ")
+        .replace(/https?:\/\/\S+/g, "") // URL 제거
+        .replace(/\b\w+:\/\/\S+/g, "")  // 기타 프로토콜 제거
         .split(/[\s/,()[\]{}]+/)
         .map((word) => {
           const cleanedWord = cleanWord(word);
@@ -49,8 +51,8 @@ export function useKeywordExtraction(searchResults: string[]): KeywordEntry[] {
         })
         .flatMap((word) => word.split(" ")) // 공백으로 분리된 단어들을 평탄화
         .filter((word) => {
-          // 빈 문자열 제거 및 숫자만으로 이루어진 단어 제거
-          return word && word.length > 1 && !/^\d+$/.test(word);
+          // 빈 문자열, 숫자, 콜론 포함 단어(URL 잔재) 제거
+          return word && word.length > 1 && !/^\d+$/.test(word) && !word.includes(":");
         });
 
       // 단어 빈도수 계산
@@ -73,9 +75,7 @@ export function useKeywordExtraction(searchResults: string[]): KeywordEntry[] {
             return acc;
           }
 
-          // 일반 단어도 카운트
-          const normalizedWord = word.length > 2 ? word : word.toUpperCase();
-          acc[normalizedWord] = (acc[normalizedWord] || 0) + 1;
+          // properNouns에 없는 일반 단어는 키워드로 포함하지 않음
           return acc;
         },
         {}

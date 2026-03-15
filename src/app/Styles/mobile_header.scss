@@ -1,9 +1,11 @@
+@import "./variables";
+
 .mobile_header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(120, 28, 46, 0.95);
   backdrop-filter: blur(8px);
   z-index: 100;
   transition: height 0.3s ease;
@@ -23,7 +25,7 @@
     padding: 0 16px;
     background: none;
     border: none;
-    color: #b7edf6;
+    color: $color-accent;
     font-size: 1.1rem;
     cursor: pointer;
 
@@ -57,7 +59,7 @@
       padding: 0 16px;
       background: none;
       border: none;
-      color: #b7edf6;
+      color: $color-accent;
       font-size: 1.1rem;
       cursor: pointer;
 
@@ -88,18 +90,18 @@
       top: 100%;
       display: flex;
       flex-direction: column;
-      background-color: #1e1e1ee7;
+      background-color: rgba(120, 28, 46, 0.97);
       backdrop-filter: blur(8px);
       margin-top: 0;
       padding: 8px 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(120, 28, 46, 0.2);
 
       .category_item {
         width: 100%;
         margin: 0;
         padding: 12px 16px;
         border: none;
-        color: white;
+        color: $color-white;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -114,12 +116,12 @@
         }
 
         &:hover {
-          background: rgba(183, 237, 246, 0.2);
+          background: rgba(196, 132, 143, 0.2);
         }
 
         &.active {
-          background: rgba(183, 237, 246, 0.3);
-          color: #b7edf6;
+          background: rgba(196, 132, 143, 0.3);
+          color: $color-accent;
         }
       }
     }
@@ -130,7 +132,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px 16px;
-    background: #1e1e1ecd;
+    background: rgba(120, 28, 46, 0.95);
     backdrop-filter: blur(20px);
     position: fixed;
     top: 0;
@@ -143,7 +145,7 @@
       font-size: 1.1rem;
       font-weight: bold;
       flex: 0 0 auto;
-      color: white;
+      color: $color-white;
     }
 
     .nav {
@@ -161,9 +163,9 @@
         .left_section {
           display: flex;
           align-items: center;
-          color: white;
+          color: $color-white;
           .lang_btn {
-            color: #b7edf6;
+            color: $color-accent;
           }
         }
       }
@@ -176,9 +178,9 @@
           display: flex;
           align-items: center;
           gap: 6px;
-          background: #092e341a;
+          background: rgba(120, 28, 46, 0.1);
           border: none;
-          color: #b7edf6;
+          color: $color-accent;
           padding: 4px 12px;
           font-size: 0.9rem;
           cursor: pointer;
@@ -200,10 +202,10 @@
           top: calc(100% + 8px);
           left: 50%;
           transform: translateX(-50%);
-          background: rgba(0, 0, 0, 0.95);
+          background: rgba(120, 28, 46, 0.97);
           padding: 8px;
           min-width: 160px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 12px rgba(120, 28, 46, 0.2);
 
           .menu_item {
             display: flex;
@@ -213,18 +215,18 @@
             padding: 8px 12px;
             border: none;
             background: none;
-            color: white;
+            color: $color-white;
             cursor: pointer;
             border-radius: 4px;
             transition: all 0.2s ease;
 
             &:hover {
-              background: rgba(183, 237, 246, 0.1);
+              background: rgba(196, 132, 143, 0.1);
             }
 
             &.active {
-              background: rgba(183, 237, 246, 0.15);
-              color: #b7edf6;
+              background: rgba(196, 132, 143, 0.15);
+              color: $color-accent;
             }
 
             .count {
@@ -253,7 +255,7 @@
           width: 28px;
           height: 28px;
           border-radius: 50%;
-          border: 1px solid #b7edf6;
+          border: 1px solid $color-accent;
           transition: all 0.2s ease;
 
           &:hover {
@@ -267,11 +269,11 @@
         position: absolute;
         top: calc(100% + 8px);
         right: 0;
-        background: #1e1e1ef4;
+        background: rgba(120, 28, 46, 0.97);
         border-radius: 8px;
         padding: 16px;
         min-width: 160px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 12px rgba(120, 28, 46, 0.2);
 
         .profile_info {
           display: flex;
@@ -281,13 +283,13 @@
 
           .large_profile_image {
             border-radius: 50%;
-            border: 2px solid #b7edf6;
+            border: 2px solid $color-accent;
             margin-bottom: 12px;
           }
 
           h3 {
             margin: 0;
-            color: #b7edf6;
+            color: $color-accent;
             font-size: 1.2rem;
             margin-bottom: 4px;
           }
@@ -310,7 +312,7 @@
               transition: color 0.2s ease;
 
               &:hover {
-                color: #b7edf6;
+                color: $color-accent;
               }
             }
           }

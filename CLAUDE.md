@@ -14,34 +14,50 @@ npm run build         # Production build (runs generate-posts-db.ts as prebuild)
 npm run start         # Serve static output from out/
 npm run lint          # ESLint (next/core-web-vitals)
 npm run deploy        # Build + deploy to GitHub Pages via gh-pages
-npm run generate:db   # Regenerate post database (tsx src/scripts/generate-posts-db.ts)
+npm run generate:db   # Regenerate post database from Supabase (prebuild step)
 npm run convert:md    # Convert markdowns (tsx src/scripts/convert-markdowns.ts)
+npm run migrate:db    # Migrate local markdown posts to Supabase
+```
+
+**Build requires `.env.local`** with Supabase credentials:
+```
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 ```
 
 ## Architecture
 
 ### Routing
 
-- **Root** (`/`) redirects to `/{lang}` based on detected language
-- **`/[lang]`** — dynamic language segment (en, ko) with `generateStaticParams`
-- **`/admin`** — admin dashboard with post editor (Lexical rich text editor)
-- **API routes**: `GET /api/posts` (all posts), `GET /api/post/[slug]` (single post)
+- **Root** (`/`) — redirects to `/{fallbackLng}` (en) via `src/app/page.tsx`
+- **`/(lang)/[lang]`** — route group for language pages; `generateStaticParams` emits `en` and `ko`; `notFound()` on unknown lang
+- **`/admin`** — admin dashboard with Lexical rich-text post editor (not statically exported, dev-only)
+- **API routes**: `GET /api/posts` (all posts), `GET /api/post/[slug]` (single post) — read from `/posts/ko/*.md` and `/posts/en/*.md` via `src/utils/markdownLoader.ts`
 
-### Content System
+### Content System (Two Paths)
 
-- Markdown files live in `/posts/en/` and `/posts/ko/` with YAML front matter (title, date, category, tags, thumbnail, description)
-- `gray-matter` parses front matter; `marked`/`remark`/`react-markdown` render HTML
-- Pre-build script `generate-posts-db.ts` processes posts into a database before each build
-- Categories: all, projects, about, career, architecture, database, backend, frontend
+There are two distinct content flows that currently coexist:
+
+1. **Supabase → prebuild** (`generate-posts-db.ts`): Fetches all posts from Supabase, converts markdown to HTML, and writes:
+   - `public/data/posts.json` — all posts array
+   - `public/data/posts/[slug].json` — individual post JSON
+   - `public/posts/ko/[slug].html` / `public/posts/en/[slug].html` — rendered HTML files
+
+2. **Markdown files → API routes** (`markdownLoader.ts`): At runtime (dev/static), API routes read `/posts/ko/*.md` and `/posts/en/*.md` directly with `gray-matter`. The client (`src/utils/clientPosts.ts`) fetches from these API routes.
+
+Post front matter schema: `title`, `date`, `category`, `tags`, `thumbnail`, `description`.
+
+Categories (defined in `src/constants/categoryOrder.ts`): `about`, `career`, `projects`, `architecture`, `database`, `backend`, `frontend`. The "all" category is added dynamically in the UI.
 
 ### Key Patterns
 
-- **Static export**: `output: "export"` in next.config.js, images unoptimized
-- **i18n**: i18next with browser language detection, resources in `src/app/i18n/`
-- **Styling**: SCSS in `src/app/Styles/` — variables in `_variables.scss`, mixins in `_mixins.scss`, responsive breakpoints at 768px/1024px/1280px, dark blue theme (#0e2954) with glass morphism
+- **Static export**: `output: "export"` in `next.config.js`, images unoptimized
+- **i18n**: i18next initialized globally and **synchronously** in `src/app/i18n/index.ts` (imported by `ClientLayout`) to avoid hydration mismatches. Translation resources are bundled in `src/app/i18n/resources.ts`. The `[lang]` segment drives `i18n.changeLanguage()` in `ClientLayout`. `suppressHydrationWarning` is set on `<html>` and `<body>` pending a full hydration fix.
+- **Styling**: SCSS in `src/app/Styles/` — variables in `_variables.scss`, mixins in `_mixins.scss`, responsive breakpoints at 768px/1024px/1280px, dark blue theme (`#0e2954`) with glass morphism
 - **Path alias**: `@/*` maps to `./src/*`
 - **State**: React hooks only (no external state library)
-- **Modals**: Portal-based pattern via `ModalPortal.tsx`
+- **Modals**: Portal-based pattern via `ModalPortal.tsx`; target `<div id="modal-root" />` is rendered in the layout
+- **Post HTML rendering**: `PostDetail` renders processed HTML via `dangerouslySetInnerHTML`
 
 ### Deployment
 

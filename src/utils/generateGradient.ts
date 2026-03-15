@@ -5,14 +5,14 @@ const generateColorFromHash = (str: string, index: number = 0) => {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
 
-  // 색상 범위를 청색-초록 계열로 제한 (180-240도)
-  const baseHue = 180; // 청록색 시작점
-  const hueRange = 60; // 색상 범위 (180-240도)
-  const h = baseHue + (Math.abs(hash + index * 30) % hueRange);
+  // 포트폴리오 색상 (Garnet ~ Dusty Rose, 345-355도)
+  const baseHue = 345;
+  const hueRange = 10;
+  const h = baseHue + (Math.abs(hash + index * 5) % hueRange);
 
-  // 채도와 명도를 무드있게 조정
-  const s = 55 + (hash % 20); // 채도 55-75% (더 차분하게)
-  const l = 40 + (hash % 3); // 명도 20-35% (더 어둡게)
+  // 채도 중간, 명도는 썸네일용으로 적당히 밝게
+  const s = 35 + (Math.abs(hash) % 15); // 채도 35-50%
+  const l = 58 + (Math.abs(hash) % 10); // 명도 58-68%
 
   return `hsl(${h}, ${s}%, ${l}%)`;
 };

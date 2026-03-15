@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, $color-primary-dark, rgb(31, 113, 140));
+    background: linear-gradient(to bottom, $color-primary-dark, $color-primary-medium);
 
     .header_content {
       .title {

@@ -3,15 +3,17 @@ import { FaGithub } from "react-icons/fa6";
 import { SiNotion } from "react-icons/si";
 import type { IconBaseProps } from "react-icons";
 import "../Styles/footer.scss";
+import { LanguageSelector } from "./LanguageSelector";
 
 export const Footer = () => {
   return (
     <div className="footer">
       <div className="footer_left">
-        <h1>Bin&apos;s Space</h1>
+        <h1>HCL&apos;s Space</h1>
+        <LanguageSelector />
       </div>
       <div className="footer_mid">
-        © 2024 Bin&apos;s Space. All rights reserved.
+        © 2026 HCL&apos;s Space. All rights reserved.
       </div>
       <div className="footer_right">
         <div className="social_links">

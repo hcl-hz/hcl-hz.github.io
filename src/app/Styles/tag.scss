@@ -1,10 +1,12 @@
+@import "./variables";
+
 .tag {
   display: inline-block;
   padding: 4px 8px;
   margin: 0 4px;
   border-radius: 12px;
-  background-color: rgba(183, 237, 246, 0.1);
-  color: #b7edf6;
+  background-color: rgba(196, 132, 143, 0.1);
+  color: $color-accent;
   font-size: 0.8rem;
   font-weight: 500;
 
@@ -12,7 +14,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(183, 237, 246, 0.2);
+      background-color: rgba(196, 132, 143, 0.2);
     }
   }
 }

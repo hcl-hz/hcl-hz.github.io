@@ -1,6 +1,6 @@
 .body {
-  --background-start-rgb: 14, 41, 84;
-  --background-end-rgb: 31, 110, 140;
+  --background-start-rgb: 249, 246, 238;
+  --background-end-rgb: 242, 237, 228;
 
   display: flex;
   min-height: 100vh;
@@ -53,7 +53,7 @@
 
 .top_button {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.18);
+  background-color: rgba(120, 28, 46, 0.15);
   border-radius: 100%;
   border: 2px solid rgba(255, 255, 255, 0.25);
   bottom: 4.2em;
@@ -80,7 +80,7 @@
 
 .language_selector_button {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.18);
+  background-color: rgba(120, 28, 46, 0.15);
   border-radius: 100%;
   border: 2px solid rgba(255, 255, 255, 0.25);
   bottom: 0.5em;

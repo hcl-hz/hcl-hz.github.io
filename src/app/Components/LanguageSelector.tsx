@@ -1,12 +1,18 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
 export const LanguageSelector = ({ disabled }: { disabled?: boolean }) => {
-  const { t, i18n } = useTranslation("common");
+  const { i18n } = useTranslation("common");
   const router = useRouter();
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleLanguage = async () => {
     if (disabled) return;
@@ -40,10 +46,12 @@ export const LanguageSelector = ({ disabled }: { disabled?: boolean }) => {
     }
   };
 
+  const lang = mounted ? i18n.resolvedLanguage : "ko";
+
   return (
     <div className="language_selector">
       <button className="lang_btn" onClick={toggleLanguage}>
-        {i18n.resolvedLanguage === "en"
+        {lang === "en"
           ? disabled
             ? "English"
             : "eng"

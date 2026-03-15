@@ -1,10 +1,12 @@
+@import "./variables";
+
 .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 5%;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.2);
+  color: $color-charcoal-muted;
+  background: rgba(120, 28, 46, 0.06);
   backdrop-filter: blur(8px);
   font-size: 0.9rem;
 
@@ -12,8 +14,8 @@
     width: 240px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 16px;
+    align-items: flex-end;
+    gap: 4px;
 
     .copyright {
       white-space: nowrap;
@@ -28,7 +30,7 @@
         transition: color 0.2s ease;
 
         &:hover {
-          color: #b7edf6;
+          color: $color-accent;
         }
       }
     }
@@ -47,7 +49,7 @@
       gap: 8px;
       justify-content: center;
       &:hover {
-        color: #b7edf6;
+        color: $color-accent;
       }
     }
   }
@@ -75,7 +77,7 @@
         gap: 8px;
         justify-content: center;
         &:hover {
-          color: #b7edf6;
+          color: $color-accent;
         }
       }
     }

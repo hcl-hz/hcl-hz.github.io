@@ -1,9 +1,9 @@
 export const resources = {
   en: {
     common: {
-      title: "Bin's Space",
+      title: "HCL's Portfolio",
       header: {
-        title: "Bin's Space",
+        title: "HCL's Portfolio",
         nav: {
           about: "About",
           projects: "Projects",
@@ -14,8 +14,8 @@ export const resources = {
         },
       },
       profile: {
-        position: "Solution Builder",
-        name: "Russ",
+        position: "Full Stack Developer",
+        name: "Ham Cho Long",
         image: "Profile Image",
         blog: "BLOG",
         emailLabel: "EMAIL",
@@ -74,9 +74,9 @@ export const resources = {
   },
   ko: {
     common: {
-      title: "Bin's Space",
+      title: "HCL's Portfolio",
       header: {
-        title: "Bin's Space",
+        title: "HCL's Portfolio",
         nav: {
           about: "소개",
           projects: "프로젝트",
@@ -87,8 +87,8 @@ export const resources = {
         },
       },
       profile: {
-        position: "Solution Builder",
-        name: "Russ",
+        position: "Full Stack Developer",
+        name: "함초롱",
         image: "프로필 이미지",
         blog: "블로그",
         emailLabel: "이메일",
